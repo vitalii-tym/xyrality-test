@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FEA734281E6056CB00379B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734271E6056CB00379B7D /* AppDelegate.swift */; };
-		FEA7342A1E6056CB00379B7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734291E6056CB00379B7D /* ViewController.swift */; };
+		FEA7342A1E6056CB00379B7D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734291E6056CB00379B7D /* LoginViewController.swift */; };
 		FEA7342D1E6056CB00379B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA7342B1E6056CB00379B7D /* Main.storyboard */; };
 		FEA7342F1E6056CB00379B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEA7342E1E6056CB00379B7D /* Assets.xcassets */; };
 		FEA734321E6056CB00379B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA734301E6056CB00379B7D /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		FEA734241E6056CB00379B7D /* Xyrality Login Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xyrality Login Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA734271E6056CB00379B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FEA734291E6056CB00379B7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FEA734291E6056CB00379B7D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FEA7342C1E6056CB00379B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FEA7342E1E6056CB00379B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEA734311E6056CB00379B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				FEA734271E6056CB00379B7D /* AppDelegate.swift */,
-				FEA734291E6056CB00379B7D /* ViewController.swift */,
+				FEA734291E6056CB00379B7D /* LoginViewController.swift */,
 				FEA7342B1E6056CB00379B7D /* Main.storyboard */,
 				FEA7342E1E6056CB00379B7D /* Assets.xcassets */,
 				FEA734301E6056CB00379B7D /* LaunchScreen.storyboard */,
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEA7342A1E6056CB00379B7D /* ViewController.swift in Sources */,
+				FEA7342A1E6056CB00379B7D /* LoginViewController.swift in Sources */,
 				FEA734281E6056CB00379B7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
