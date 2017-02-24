@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         login()
     }
     
+    var aNetworkRequest: NetworkRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,12 +63,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        present( UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as UIViewController, animated: true, completion: nil)
+        if let loginURL = Foundation.URL(string: "https://google.com") {
+            aNetworkRequest = NetworkRequest()
+            aNetworkRequest?.getData(loginURL) {
+                (data, response, error) -> Void in
+                
+                if error == nil && data != nil {
+                    if let theResponse = response as? HTTPURLResponse {
+                        if theResponse.statusCode == 200 {
+                            self.present( UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as UIViewController, animated: true, completion: nil)
+                        } else {
+                            print("Error: \(theResponse.statusCode)")
+                            // TODO: tell the user there was an error
+                        }
+                    } else {
+                        // TODO: Looks like there was a malformed response from server
+                    }
+                } else {
+                    // TODO: Let user know there was a network problem
+                }
+            }
+        } else {
+            print("incorrect URL")
+        }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         textFieldPassword.removeTarget(self, action: #selector(validateCredentialsAndEnableLogin), for: .valueChanged)
         textFieldEmail.removeTarget(self, action: #selector(validateCredentialsAndEnableLogin), for: .valueChanged)
+        self.aNetworkRequest?.cancelSession()
         
         super.viewWillDisappear(animated)
     }
