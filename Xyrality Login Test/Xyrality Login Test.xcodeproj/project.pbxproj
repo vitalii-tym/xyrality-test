@@ -12,6 +12,8 @@
 		FEA7342D1E6056CB00379B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA7342B1E6056CB00379B7D /* Main.storyboard */; };
 		FEA7342F1E6056CB00379B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEA7342E1E6056CB00379B7D /* Assets.xcassets */; };
 		FEA734321E6056CB00379B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA734301E6056CB00379B7D /* LaunchScreen.storyboard */; };
+		FEA7343A1E606CFB00379B7D /* WorldsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA734391E606CFB00379B7D /* WorldsList.storyboard */; };
+		FEA7343C1E606E2100379B7D /* WorldsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7343B1E606E2100379B7D /* WorldsListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		FEA7342E1E6056CB00379B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEA734311E6056CB00379B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEA734331E6056CB00379B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEA734391E606CFB00379B7D /* WorldsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorldsList.storyboard; sourceTree = "<group>"; };
+		FEA7343B1E606E2100379B7D /* WorldsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldsListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +59,31 @@
 			isa = PBXGroup;
 			children = (
 				FEA734271E6056CB00379B7D /* AppDelegate.swift */,
-				FEA734291E6056CB00379B7D /* LoginViewController.swift */,
-				FEA7342B1E6056CB00379B7D /* Main.storyboard */,
+				FEA7343D1E606E3100379B7D /* Login */,
+				FEA7343E1E606E4900379B7D /* Worlds List */,
 				FEA7342E1E6056CB00379B7D /* Assets.xcassets */,
 				FEA734301E6056CB00379B7D /* LaunchScreen.storyboard */,
 				FEA734331E6056CB00379B7D /* Info.plist */,
 			);
 			path = "Xyrality Login Test";
+			sourceTree = "<group>";
+		};
+		FEA7343D1E606E3100379B7D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FEA734291E6056CB00379B7D /* LoginViewController.swift */,
+				FEA7342B1E6056CB00379B7D /* Main.storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		FEA7343E1E606E4900379B7D /* Worlds List */ = {
+			isa = PBXGroup;
+			children = (
+				FEA734391E606CFB00379B7D /* WorldsList.storyboard */,
+				FEA7343B1E606E2100379B7D /* WorldsListViewController.swift */,
+			);
+			name = "Worlds List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +148,7 @@
 				FEA734321E6056CB00379B7D /* LaunchScreen.storyboard in Resources */,
 				FEA7342F1E6056CB00379B7D /* Assets.xcassets in Resources */,
 				FEA7342D1E6056CB00379B7D /* Main.storyboard in Resources */,
+				FEA7343A1E606CFB00379B7D /* WorldsList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEA7342A1E6056CB00379B7D /* LoginViewController.swift in Sources */,
+				FEA7343C1E606E2100379B7D /* WorldsListViewController.swift in Sources */,
 				FEA734281E6056CB00379B7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

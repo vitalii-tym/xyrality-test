@@ -61,9 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-
-        // TODO: Continue with the login process
-    
+        present( UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as UIViewController, animated: true, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,7 +70,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         super.viewWillDisappear(animated)
     }
-    
-    
 }
-

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Worlds List View Controller-->
+        <scene sceneID="unh-gM-r36">
+            <objects>
+                <viewController storyboardIdentifier="initialWorldsList" id="fOk-Mv-QCb" customClass="WorldsListViewController" customModule="Xyrality_Login_Test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W43-Wi-H3w"/>
+                        <viewControllerLayoutGuide type="bottom" id="QgW-Ne-h4n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xkj-fi-ujT">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e7I-m9-AAH">
+                                <rect key="frame" x="0.0" y="20" width="667" height="355"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bEC-XX-0O0">
+                                    <size key="itemSize" width="374" height="85"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="aWorld" id="Re4-si-CWe" customClass="aWorldCell" customModule="Xyrality_Login_Test" customModuleProvider="target">
+                                        <rect key="frame" x="147" y="0.0" width="374" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;World Name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCP-QP-87x">
+                                                    <rect key="frame" x="8" y="32" width="116" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="uCP-QP-87x" firstAttribute="leading" secondItem="Re4-si-CWe" secondAttribute="leadingMargin" id="SD0-rX-oTf"/>
+                                            <constraint firstItem="uCP-QP-87x" firstAttribute="centerY" secondItem="Re4-si-CWe" secondAttribute="centerY" id="ibU-zA-I6H"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="labelWorldName" destination="uCP-QP-87x" id="C1s-Nf-VWi"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="fOk-Mv-QCb" id="60y-KI-Kj8"/>
+                                    <outlet property="delegate" destination="fOk-Mv-QCb" id="VHz-kk-qX3"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e7I-m9-AAH" firstAttribute="leading" secondItem="xkj-fi-ujT" secondAttribute="leading" id="68P-gm-eel"/>
+                            <constraint firstItem="QgW-Ne-h4n" firstAttribute="top" secondItem="e7I-m9-AAH" secondAttribute="bottom" id="hvq-DU-JDg"/>
+                            <constraint firstAttribute="trailing" secondItem="e7I-m9-AAH" secondAttribute="trailing" id="oBx-5J-rlm"/>
+                            <constraint firstItem="e7I-m9-AAH" firstAttribute="top" secondItem="W43-Wi-H3w" secondAttribute="bottom" id="t3Z-6o-py4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHr-2x-UlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55.200000000000003" y="59.820089955022496"/>
+        </scene>
+    </scenes>
+</document>
