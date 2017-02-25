@@ -64,9 +64,9 @@
 			children = (
 				FEA734271E6056CB00379B7D /* AppDelegate.swift */,
 				FEA186581E616FD900A94135 /* AppConfig.swift */,
+				FEA7343F1E60755100379B7D /* Networking.swift */,
 				FEA7343D1E606E3100379B7D /* Login */,
 				FEA7343E1E606E4900379B7D /* Worlds List */,
-				FEA7343F1E60755100379B7D /* Networking.swift */,
 				FEA7342E1E6056CB00379B7D /* Assets.xcassets */,
 				FEA734301E6056CB00379B7D /* LaunchScreen.storyboard */,
 				FEA734331E6056CB00379B7D /* Info.plist */,
@@ -86,8 +86,8 @@
 		FEA7343E1E606E4900379B7D /* Worlds List */ = {
 			isa = PBXGroup;
 			children = (
-				FEA734391E606CFB00379B7D /* WorldsList.storyboard */,
 				FEA7343B1E606E2100379B7D /* WorldsListViewController.swift */,
+				FEA734391E606CFB00379B7D /* WorldsList.storyboard */,
 			);
 			name = "Worlds List";
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

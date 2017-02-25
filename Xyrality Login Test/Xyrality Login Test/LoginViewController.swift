@@ -63,10 +63,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
+        
+        let payloadForWorlds = xyralityAPICalls.worlds.generatePayload(login: textFieldEmail.text!, password: textFieldPassword.text!)
+        
         aNetworkRequest = NetworkRequest()
-        aNetworkRequest?.getData(xyralityAPICalls.worlds.asURL()) {
-            (data, response, error) -> Void in
-            
+
+        aNetworkRequest?.getData(forURL: xyralityAPICalls.worlds.asURL(), payload: payloadForWorlds) { (data, response, error) -> Void in
             if error == nil && data != nil {
                 if let theResponse = response as? HTTPURLResponse {
                     if theResponse.statusCode == 200 {
