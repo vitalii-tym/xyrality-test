@@ -72,11 +72,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if error == nil && data != nil {
                 if let theResponse = response as? HTTPURLResponse {
                     if theResponse.statusCode == 200 {
-                        if let worldsList = xyralityWorldsList.init(data: data!) {
-                            
-                            print("there are \(worldsList.worlds.count) worlds available")
-                            
-                            self.present( UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as UIViewController, animated: true, completion: nil)
+                        if let worldsList = xyralityWorldsList.init(data: data!),
+                           let worldsListVC = UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as? WorldsListViewController {
+                                worldsListVC.worldsList = worldsList
+                                self.present(worldsListVC, animated: true)
                         } else if let isItAnError = xyralityError.init(data: data!) {
                             print("There was an error")
                         } else {

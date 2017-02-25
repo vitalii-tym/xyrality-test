@@ -14,14 +14,16 @@ class aWorldCell: UICollectionViewCell {
 
 class WorldsListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var worldsList: xyralityWorldsList?
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return worldsList?.worlds.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "aWorld", for: indexPath) as! aWorldCell
         
-        cell.labelWorldName.text = "test"
+        cell.labelWorldName.text = worldsList?.worlds[indexPath.row].name
         
         return cell
     }
