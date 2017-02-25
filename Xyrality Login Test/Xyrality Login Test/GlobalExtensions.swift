@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func showAlert(title: String, bodyText: String) -> Void {
         let alert = UIAlertController(title: title, message: bodyText, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "is a general OK button on alerts"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }

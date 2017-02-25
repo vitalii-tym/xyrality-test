@@ -30,7 +30,7 @@ class WorldsListViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: self.view.frame.width, height: 116)
+        return CGSize(width: self.view.frame.width, height: 25)
 
     }
 }

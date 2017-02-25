@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Show me the Worlds"; ObjectID = "0ji-9M-eVP"; */
+"0ji-9M-eVP.normalTitle" = "Show me the Worlds";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "2FZ-yT-fOW"; */
+"2FZ-yT-fOW.placeholder" = "password";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "W3Q-I9-zsf"; */
+"W3Q-I9-zsf.placeholder" = "email";

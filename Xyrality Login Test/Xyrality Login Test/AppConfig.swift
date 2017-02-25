@@ -54,3 +54,14 @@ enum xyralityAPICalls: String {
         }
     }
 }
+
+enum errorTitles {
+    case internalError, networkError
+    
+    func text() -> String {
+        switch self {
+        case .internalError: return NSLocalizedString("Internal Error", comment: "is a common alert title for internal errors")
+        case .networkError: return NSLocalizedString("Network Error", comment: "is a common alert title for all network-related errors")
+        }
+    }
+}

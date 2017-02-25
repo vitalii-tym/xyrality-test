@@ -67,29 +67,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let payloadForWorlds = xyralityAPICalls.worlds.generatePayload(login: textFieldEmail.text!, password: textFieldPassword.text!)
         aNetworkRequest = NetworkRequest()
         aNetworkRequest?.getData(forURL: xyralityAPICalls.worlds.URL(), method: xyralityAPICalls.worlds.method(), payload: payloadForWorlds) { (data, response, error) -> Void in
-            if error == nil && data != nil {
-                if let theResponse = response as? HTTPURLResponse {
-                    if theResponse.statusCode == 200 {
-                        if let worldsList = xyralityWorldsList.init(data: data!),
-                           let worldsListVC = UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as? WorldsListViewController {
-                                worldsListVC.worldsList = worldsList
-                                self.present(worldsListVC, animated: true)
-                        } else if let errorFromAPI = xyralityError.init(data: data!) {
-                            self.showAlert(title: "Error", bodyText: "Server error. \(errorFromAPI.errorText)")
-                        } else {
-                            self.showAlert(title: "Error", bodyText: "Unknown response from server. Try again")
-                        }
-                    } else {
-                        self.showAlert(title: "Error", bodyText: "Server error. Code: \(theResponse.statusCode)")
-                    }
+            if isRequestOK(data, response, error) {
+                if let worldsList = xyralityWorldsList.init(data: data!),
+                   let worldsListVC = UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as? WorldsListViewController {
+                        worldsListVC.worldsList = worldsList
+                        self.present(worldsListVC, animated: true)
+                } else if let errorFromAPI = xyralityError.init(data: data!) {
+                    self.showAlert(title: errorTitles.internalError.text(),
+                                   bodyText: NSLocalizedString("Server error. \(errorFromAPI.errorText)", comment: "error description when API returns an error message"))
                 } else {
-                    self.showAlert(title: "Error", bodyText: "Couldn't read response from server. Try again")
-                }
-            } else {
-                if error != nil { // Just a regular network error
-                    self.showAlert(title: "Error", bodyText: error!.localizedDescription)
-                } else if data == nil { // There were no network error, but we also got no data from server for some reason
-                    self.showAlert(title: "Error", bodyText: "unknown error")
+                    self.showAlert(title: errorTitles.internalError.text(),
+                                   bodyText: NSLocalizedString("Unknown response from server. Try again", comment: "error description when we couldn't recognize received data neither as an expected kind of data, nor as an error"))
                 }
             }
         }
