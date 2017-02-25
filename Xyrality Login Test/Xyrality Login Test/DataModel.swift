@@ -26,7 +26,7 @@ class xyralityError {
     var errorText: String!
     
     init? (data: Data) {
-        if let jsonObjectRoot = fixJsonData(data) {
+        if let jsonObjectRoot = tryGetDictFromData(data) {
             if let message = jsonObjectRoot["error"] as? String {
                 self.errorText = message
             } else {
@@ -91,7 +91,7 @@ class xyralityWorldsList {
     var worlds: [gameWorld] = []
 
     init?(data: Data) {
-        if let jsonObjectRoot = fixJsonData(data) {
+        if let jsonObjectRoot = tryGetDictFromData(data) {
             if let availableWorlds = jsonObjectRoot["allAvailableWorlds"] as? Array<AnyObject> {
                 for aWorld in availableWorlds {
                     () // TODO: continue parsing worlds here
@@ -105,34 +105,21 @@ class xyralityWorldsList {
     }
 }
 
-func fixJsonData (_ data: Data) -> Dictionary<String, AnyObject>? {
-    if let unwrappedString = String(data: data, encoding: String.Encoding.utf8) {
-        var dataString = unwrappedString
-        dataString = dataString.replacingOccurrences(of: "\\'", with: "'")
-        
-        if let dataInUTF8 = dataString.data(using: String.Encoding.utf8) {
-            var jsonObject: Dictionary<String, AnyObject>?
+func tryGetDictFromData (_ data: Data) -> Dictionary<String, AnyObject>? {
+    var dict: Dictionary<String, AnyObject>?
             
-            do {
-                jsonObject = try JSONSerialization.jsonObject(with: dataInUTF8, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? Dictionary<String, AnyObject>
-            }
-            catch let error as NSError {
-                print("can't deserialized JSON data. Error: \(error.localizedDescription)")
-                return nil
-            }
-            
-            if let jsonObjectRoot = jsonObject {
-                return jsonObjectRoot
-            } else {
-                print("couldn't upack jsonObject")
-                return nil
-            }
-        } else {
-            print("couldn't convert back to data")
-            return nil
-        }
+    do {
+        dict = try PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: nil) as? Dictionary<String, AnyObject>
+    }
+    catch let error as NSError {
+        print("can't deserialized JSON data. Error: \(error.localizedDescription)")
+        return nil
+    }
+    
+    if let theDict = dict {
+        return theDict
     } else {
-        print("couldn't convert data to String")
+        print("type casting to Dict failed - the data is not in dictionary format")
         return nil
     }
 }
