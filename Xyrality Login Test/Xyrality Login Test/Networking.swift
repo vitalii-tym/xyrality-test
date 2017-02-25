@@ -16,7 +16,7 @@ class NetworkRequest {
     
     func getData(_ URL: URL, completionHandler: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
         var request = URLRequest(url: URL)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
         let dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
             OperationQueue.main.addOperation({ () -> Void in
                 completionHandler(data, response, error as NSError?) })
