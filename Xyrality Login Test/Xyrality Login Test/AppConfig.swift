@@ -15,20 +15,24 @@ let deviceID: String = NSUUID().uuidString
 enum xyralityAPICalls {
     case worlds
     
-    func asString() -> String {
+    func urlStringAndMethod() -> (url: String, method: String) {
         switch  self {
         case .worlds: // The list of game worlds
-            return "http://backend1.lordsandknights.com/XYRALITY/WebObjects/BKLoginServer.woa/wa/worlds"
+            return ("http://backend1.lordsandknights.com/XYRALITY/WebObjects/BKLoginServer.woa/wa/worlds", "POST")
         }
     }
     
-    func asURL() -> URL {
-        if let url = Foundation.URL(string: self.asString()) {
+    func URL() -> URL {
+        if let url = Foundation.URL(string: self.urlStringAndMethod().url) {
             return url
         } else {
-            print("\(self.asString()) is not a correct url. Failed to convert it into URL")
+            print("\(self.urlStringAndMethod().url) is not a correct url. Failed to convert it into URL")
             return Foundation.URL(string: "https://xyrality.helpshift.com/")!
         }
+    }
+    
+    func method() -> String {
+        return self.urlStringAndMethod().method
     }
     
     func generatePayload(login: String = "", password: String = "") -> String {

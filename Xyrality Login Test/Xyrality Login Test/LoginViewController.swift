@@ -68,20 +68,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         aNetworkRequest = NetworkRequest()
 
-        aNetworkRequest?.getData(forURL: xyralityAPICalls.worlds.asURL(), payload: payloadForWorlds) { (data, response, error) -> Void in
+        aNetworkRequest?.getData(forURL: xyralityAPICalls.worlds.URL(), method: xyralityAPICalls.worlds.method(), payload: payloadForWorlds) { (data, response, error) -> Void in
             if error == nil && data != nil {
                 if let theResponse = response as? HTTPURLResponse {
                     if theResponse.statusCode == 200 {
-                        self.present( UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as UIViewController, animated: true, completion: nil)
+                        if let worldsList = xyralityWorldsList.init(data: data!) {
+                            print("there are some worlds available")
+                            
+                            self.present( UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as UIViewController, animated: true, completion: nil)
+                        } else if let isItAnError = xyralityError.init(data: data!) {
+                            print("There was an error")
+                        } else {
+                            print("the received data is neither worlds list, not an error")
+                        }
                     } else {
                         print("Error: \(theResponse.statusCode)")
                         // TODO: tell the user there was an error
                     }
                 } else {
-                    // TODO: Looks like there was a malformed response from server
+                    () // TODO: Looks like there was a malformed response from server
                 }
             } else {
-                // TODO: Let user know there was a network problem
+                () // TODO: Let user know there was a network problem
             }
         }
     }
