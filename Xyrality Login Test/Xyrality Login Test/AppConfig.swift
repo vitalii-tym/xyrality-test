@@ -12,27 +12,23 @@ import UIKit
 let deviceType: String = "\(UIDevice.current.model) - \(UIDevice.current.systemName) - \(UIDevice.current.systemVersion)"
 let deviceID: String = NSUUID().uuidString
 
-enum xyralityAPICalls {
-    case worlds
+enum xyralityAPICalls: String {
+    case worlds = "http://backend1.lordsandknights.com/XYRALITY/WebObjects/BKLoginServer.woa/wa/worlds"
     
-    func urlStringAndMethod() -> (url: String, method: String) {
+    func method() -> String {
         switch  self {
-        case .worlds: // The list of game worlds
-            return ("http://backend1.lordsandknights.com/XYRALITY/WebObjects/BKLoginServer.woa/wa/worlds", "POST")
+        case .worlds: // All urls, which will be using POST method
+            return "POST"
         }
     }
     
     func URL() -> URL {
-        if let url = Foundation.URL(string: self.urlStringAndMethod().url) {
+        if let url = Foundation.URL(string: self.rawValue) {
             return url
         } else {
-            print("\(self.urlStringAndMethod().url) is not a correct url. Failed to convert it into URL")
+            print("\(self.rawValue) is not a correct url. Failed to convert it into URL")
             return Foundation.URL(string: "https://xyrality.helpshift.com/")!
         }
-    }
-    
-    func method() -> String {
-        return self.urlStringAndMethod().method
     }
     
     func generatePayload(login: String = "", password: String = "") -> String {

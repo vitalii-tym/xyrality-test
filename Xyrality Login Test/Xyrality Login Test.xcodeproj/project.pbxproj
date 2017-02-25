@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FEA186591E616FD900A94135 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA186581E616FD900A94135 /* AppConfig.swift */; };
 		FEA1865B1E61A00200A94135 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1865A1E61A00200A94135 /* DataModel.swift */; };
+		FEA1865D1E61D5AB00A94135 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1865C1E61D5AB00A94135 /* GlobalExtensions.swift */; };
 		FEA734281E6056CB00379B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734271E6056CB00379B7D /* AppDelegate.swift */; };
 		FEA7342A1E6056CB00379B7D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734291E6056CB00379B7D /* LoginViewController.swift */; };
 		FEA7342D1E6056CB00379B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA7342B1E6056CB00379B7D /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		FEA186581E616FD900A94135 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		FEA1865A1E61A00200A94135 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		FEA1865C1E61D5AB00A94135 /* GlobalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		FEA734241E6056CB00379B7D /* Xyrality Login Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xyrality Login Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA734271E6056CB00379B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEA734291E6056CB00379B7D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				FEA186581E616FD900A94135 /* AppConfig.swift */,
 				FEA7343F1E60755100379B7D /* Networking.swift */,
 				FEA1865A1E61A00200A94135 /* DataModel.swift */,
+				FEA1865C1E61D5AB00A94135 /* GlobalExtensions.swift */,
 				FEA7343D1E606E3100379B7D /* Login */,
 				FEA7343E1E606E4900379B7D /* Worlds List */,
 				FEA7342E1E6056CB00379B7D /* Assets.xcassets */,
@@ -174,6 +177,7 @@
 				FEA186591E616FD900A94135 /* AppConfig.swift in Sources */,
 				FEA734401E60755100379B7D /* Networking.swift in Sources */,
 				FEA1865B1E61A00200A94135 /* DataModel.swift in Sources */,
+				FEA1865D1E61D5AB00A94135 /* GlobalExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

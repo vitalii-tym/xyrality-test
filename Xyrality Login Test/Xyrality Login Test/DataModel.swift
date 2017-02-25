@@ -10,7 +10,7 @@ import Foundation
 
 class xyralityError {
 
-    /* Example error:
+    /* Example error as returned from API:
     {
         "error" = "Insufficient parameters.";
         "requestParameters" = {};
@@ -26,15 +26,9 @@ class xyralityError {
     var errorText: String!
     
     init? (data: Data) {
-        if let jsonObjectRoot = tryGetDictFromData(data) {
-            if let message = jsonObjectRoot["error"] as? String {
-                self.errorText = message
-            } else {
-                return nil
-            }
-        } else {
-            return nil
-        }
+        guard let jsonObjectRoot = tryGetDictFromData(data) else { return nil }
+        guard let message = jsonObjectRoot["error"] as? String else { return nil }
+        self.errorText = message
     }
 }
 
@@ -50,7 +44,7 @@ struct gameWorld {
 
 class xyralityWorldsList {
     
-    /* Example of worlds list
+    /* Example worlds list as returned from API
     {
     "featureAppleTVSynchronisation" = "false";
     "featureDirectPlay" = "true";
@@ -91,36 +85,31 @@ class xyralityWorldsList {
     var worlds: [gameWorld] = []
 
     init?(data: Data) {
-        if let jsonObjectRoot = tryGetDictFromData(data) {
-            if let availableWorlds = jsonObjectRoot["allAvailableWorlds"] as? Array<AnyObject> {
-                for aWorld in availableWorlds {
-                    if let worldDict = aWorld as? Dictionary<String, AnyObject>,
-                        let name = worldDict["name"] as? String,
-                        let mapURL = worldDict["mapURL"] as? String,
-                        let country = worldDict["country"] as? String,
-                        let language = worldDict["language"] as? String,
-                        let idString = worldDict["id"] as? String,
-                        let url = worldDict["url"] as? String,
-                        let statusDict = worldDict["worldStatus"] as? Dictionary<String,String> {
-                            if let idInt = Int(idString),
-                                let statusIDString = statusDict["id"],
-                                let statusID = Int(statusIDString),
-                                let statusDescription = statusDict["description"] {
-                                self.worlds.append(gameWorld(name: name,
-                                                             mapURL: mapURL,
-                                                             country: country,
-                                                             language: language,
-                                                             id: idInt,
-                                                             url: url,
-                                                             status: (statusID, statusDescription)))
-                            }
-                    }
+        guard let jsonObjectRoot = tryGetDictFromData(data) else { return nil }
+        guard let availableWorlds = jsonObjectRoot["allAvailableWorlds"] as? Array<AnyObject> else { return nil }
+        
+        for aWorld in availableWorlds {
+            if let worldDict = aWorld as? Dictionary<String, AnyObject>,
+                let name = worldDict["name"] as? String,
+                let mapURL = worldDict["mapURL"] as? String,
+                let country = worldDict["country"] as? String,
+                let language = worldDict["language"] as? String,
+                let idString = worldDict["id"] as? String,
+                let url = worldDict["url"] as? String,
+                let statusDict = worldDict["worldStatus"] as? Dictionary<String,String> {
+                if let idInt = Int(idString),
+                    let statusIDString = statusDict["id"],
+                    let statusID = Int(statusIDString),
+                    let statusDescription = statusDict["description"] {
+                    self.worlds.append(gameWorld(name: name,
+                                                 mapURL: mapURL,
+                                                 country: country,
+                                                 language: language,
+                                                 id: idInt,
+                                                 url: url,
+                                                 status: (statusID, statusDescription)))
                 }
-            } else {
-                return nil
             }
-        } else {
-            return nil
         }
     }
 }
@@ -136,10 +125,9 @@ func tryGetDictFromData (_ data: Data) -> Dictionary<String, AnyObject>? {
         return nil
     }
     
-    if let theDict = dict {
-        return theDict
-    } else {
+    guard let theDict = dict else {
         print("type casting to Dict failed - the data is not in dictionary format")
         return nil
     }
+    return theDict
 }

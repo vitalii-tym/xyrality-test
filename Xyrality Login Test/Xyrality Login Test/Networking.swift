@@ -10,7 +10,7 @@ import Foundation
 
 class NetworkRequest {
     
-    var session: Foundation.URLSession {
+    fileprivate var session: Foundation.URLSession {
         return URLSession(configuration: URLSessionConfiguration.default)
     }
     

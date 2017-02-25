@@ -14,11 +14,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var buttonLogin: UIButton!
     
-    @IBAction func actionLogin(_ sender: UIButton) {
-        login()
-    }
+    @IBAction func actionLogin(_ sender: UIButton) { login() }
     
-    var aNetworkRequest: NetworkRequest?
+    private var aNetworkRequest: NetworkRequest?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +37,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         if (textField.returnKeyType == UIReturnKeyType.next) && textField === textFieldEmail {
             textFieldEmail.resignFirstResponder()
             textFieldPassword.becomeFirstResponder()
@@ -52,22 +49,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    func validateCredentialsAndEnableLogin() {
+    @objc private func validateCredentialsAndEnableLogin() {
         if let emailString = textFieldEmail.text, !emailString.isEmpty,
             let passwordString = textFieldPassword.text, !passwordString.isEmpty,
-            emailString.contains("@") && emailString.contains(".") {
+            isValidEmail(email: emailString) {
             buttonLogin.isEnabled = true
         } else {
             buttonLogin.isEnabled = false
         }
     }
     
-    func login() {
-        
+    private func isValidEmail(email: String) -> Bool {
+        return email.contains("@") && email.contains(".")
+    }
+    
+    private func login() {
         let payloadForWorlds = xyralityAPICalls.worlds.generatePayload(login: textFieldEmail.text!, password: textFieldPassword.text!)
-        
         aNetworkRequest = NetworkRequest()
-
         aNetworkRequest?.getData(forURL: xyralityAPICalls.worlds.URL(), method: xyralityAPICalls.worlds.method(), payload: payloadForWorlds) { (data, response, error) -> Void in
             if error == nil && data != nil {
                 if let theResponse = response as? HTTPURLResponse {
@@ -76,20 +74,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                            let worldsListVC = UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as? WorldsListViewController {
                                 worldsListVC.worldsList = worldsList
                                 self.present(worldsListVC, animated: true)
-                        } else if let isItAnError = xyralityError.init(data: data!) {
-                            print("There was an error")
+                        } else if let errorFromAPI = xyralityError.init(data: data!) {
+                            self.showAlert(title: "Error", bodyText: "Server error. \(errorFromAPI.errorText)")
                         } else {
-                            print("the received data is neither worlds list, not an error")
+                            self.showAlert(title: "Error", bodyText: "Unknown response from server. Try again")
                         }
                     } else {
-                        print("Error: \(theResponse.statusCode)")
-                        // TODO: tell the user there was an error
+                        self.showAlert(title: "Error", bodyText: "Server error. Code: \(theResponse.statusCode)")
                     }
                 } else {
-                    () // TODO: Looks like there was a malformed response from server
+                    self.showAlert(title: "Error", bodyText: "Couldn't read response from server. Try again")
                 }
             } else {
-                () // TODO: Let user know there was a network problem
+                if error != nil { // Just a regular network error
+                    self.showAlert(title: "Error", bodyText: error!.localizedDescription)
+                } else if data == nil { // There were no network error, but we also got no data from server for some reason
+                    self.showAlert(title: "Error", bodyText: "unknown error")
+                }
             }
         }
     }
