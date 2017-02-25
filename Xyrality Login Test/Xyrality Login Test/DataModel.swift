@@ -94,7 +94,27 @@ class xyralityWorldsList {
         if let jsonObjectRoot = tryGetDictFromData(data) {
             if let availableWorlds = jsonObjectRoot["allAvailableWorlds"] as? Array<AnyObject> {
                 for aWorld in availableWorlds {
-                    () // TODO: continue parsing worlds here
+                    if let worldDict = aWorld as? Dictionary<String, AnyObject>,
+                        let name = worldDict["name"] as? String,
+                        let mapURL = worldDict["mapURL"] as? String,
+                        let country = worldDict["country"] as? String,
+                        let language = worldDict["language"] as? String,
+                        let idString = worldDict["id"] as? String,
+                        let url = worldDict["url"] as? String,
+                        let statusDict = worldDict["worldStatus"] as? Dictionary<String,String> {
+                            if let idInt = Int(idString),
+                                let statusIDString = statusDict["id"],
+                                let statusID = Int(statusIDString),
+                                let statusDescription = statusDict["description"] {
+                                self.worlds.append(gameWorld(name: name,
+                                                             mapURL: mapURL,
+                                                             country: country,
+                                                             language: language,
+                                                             id: idInt,
+                                                             url: url,
+                                                             status: (statusID, statusDescription)))
+                            }
+                    }
                 }
             } else {
                 return nil
