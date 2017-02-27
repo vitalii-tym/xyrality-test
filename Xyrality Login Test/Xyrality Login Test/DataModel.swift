@@ -8,7 +8,7 @@
 
 import Foundation
 
-class XyralityError {
+struct XyralityError {
 
     /* Example error as returned from API:
     {

@@ -68,7 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                    let worldsListVC = UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as? WorldsListViewController {
                         worldsListVC.worldsList = worldsList
                         self.present(worldsListVC, animated: true)
-                } else if let errorFromAPI = XyralityError.init(data: data!) {
+                } else if let errorFromAPI = XyralityError(data: data!) {
                     self.showAlert(title: errorTitles.internalError.text(),
                                    bodyText: NSLocalizedString("Server error. \(errorFromAPI.errorText)", comment: "error description when API returns an error message"))
                 } else {
