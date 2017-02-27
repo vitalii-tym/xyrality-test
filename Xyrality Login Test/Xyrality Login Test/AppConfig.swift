@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-let deviceType: String = "\(UIDevice.current.model) - \(UIDevice.current.systemName) - \(UIDevice.current.systemVersion)"
-let deviceID: String = NSUUID().uuidString
+let DeviceType: String = "\(UIDevice.current.model) - \(UIDevice.current.systemName) - \(UIDevice.current.systemVersion)"
+let DeviceID: String = NSUUID().uuidString
 
 enum xyralityAPICalls: String {
     case worlds = "http://backend1.lordsandknights.com/XYRALITY/WebObjects/BKLoginServer.woa/wa/worlds"
@@ -38,8 +38,8 @@ enum xyralityAPICalls: String {
             // Example: login=test@test.com&password=test&deviceType=iPhone%20-%20iOS%20-%2010.2&deviceId=D117C8D4-B6CD-414B-9486-9A59C1CC28EA
             let params: Dictionary<String, String> = ["login": login,
                                                       "password": password,
-                                                      "deviceType": deviceType,
-                                                      "deviceId": deviceID]
+                                                      "deviceType": DeviceType,
+                                                      "deviceId": DeviceID]
             return dictToPayloadString(params)
         }
     }

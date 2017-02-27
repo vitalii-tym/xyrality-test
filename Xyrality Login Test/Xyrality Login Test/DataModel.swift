@@ -8,7 +8,7 @@
 
 import Foundation
 
-class xyralityError {
+class XyralityError {
 
     /* Example error as returned from API:
     {
@@ -32,7 +32,7 @@ class xyralityError {
     }
 }
 
-struct gameWorld {
+struct GameWorld {
     var name: String
     var mapURL: String
     var country: String
@@ -42,7 +42,7 @@ struct gameWorld {
     var status: (id: Int, description: String)
 }
 
-class xyralityWorldsList {
+class XyralityWorldsList {
     
     /* Example worlds list as returned from API
     {
@@ -82,7 +82,7 @@ class xyralityWorldsList {
     "info" = "Unknown user";
     } */
  
-    var worlds: [gameWorld] = []
+    var worlds: [GameWorld] = []
 
     init?(data: Data) {
         guard let jsonObjectRoot = tryGetDictFromData(data) else { return nil }
@@ -101,7 +101,7 @@ class xyralityWorldsList {
                     let statusIDString = statusDict["id"],
                     let statusID = Int(statusIDString),
                     let statusDescription = statusDict["description"] {
-                    self.worlds.append(gameWorld(name: name,
+                    self.worlds.append(GameWorld(name: name,
                                                  mapURL: mapURL,
                                                  country: country,
                                                  language: language,

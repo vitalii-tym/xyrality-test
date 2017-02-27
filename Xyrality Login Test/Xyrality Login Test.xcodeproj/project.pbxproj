@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		FEA186591E616FD900A94135 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA186581E616FD900A94135 /* AppConfig.swift */; };
 		FEA1865B1E61A00200A94135 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1865A1E61A00200A94135 /* DataModel.swift */; };
-		FEA1865D1E61D5AB00A94135 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1865C1E61D5AB00A94135 /* GlobalExtensions.swift */; };
+		FEA1865D1E61D5AB00A94135 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1865C1E61D5AB00A94135 /* UIViewControllerExtensions.swift */; };
 		FEA1865F1E61E0C700A94135 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1865E1E61E0C700A94135 /* ErrorHandling.swift */; };
 		FEA734281E6056CB00379B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734271E6056CB00379B7D /* AppDelegate.swift */; };
 		FEA7342A1E6056CB00379B7D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA734291E6056CB00379B7D /* LoginViewController.swift */; };
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		FEA186581E616FD900A94135 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		FEA1865A1E61A00200A94135 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		FEA1865C1E61D5AB00A94135 /* GlobalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
+		FEA1865C1E61D5AB00A94135 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		FEA1865E1E61E0C700A94135 /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		FEA186611E61E45F00A94135 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FEA734241E6056CB00379B7D /* Xyrality Login Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xyrality Login Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,9 +74,9 @@
 				FEA7343F1E60755100379B7D /* Networking.swift */,
 				FEA1865E1E61E0C700A94135 /* ErrorHandling.swift */,
 				FEA1865A1E61A00200A94135 /* DataModel.swift */,
-				FEA1865C1E61D5AB00A94135 /* GlobalExtensions.swift */,
 				FEA7343D1E606E3100379B7D /* Login */,
 				FEA7343E1E606E4900379B7D /* Worlds List */,
+				FEF0E8771E642EC400E853AB /* Extensions */,
 				FEA7342E1E6056CB00379B7D /* Assets.xcassets */,
 				FEA734301E6056CB00379B7D /* LaunchScreen.storyboard */,
 				FEA734331E6056CB00379B7D /* Info.plist */,
@@ -100,6 +100,14 @@
 				FEA734391E606CFB00379B7D /* WorldsList.storyboard */,
 			);
 			name = "Worlds List";
+			sourceTree = "<group>";
+		};
+		FEF0E8771E642EC400E853AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FEA1865C1E61D5AB00A94135 /* UIViewControllerExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +190,7 @@
 				FEA734401E60755100379B7D /* Networking.swift in Sources */,
 				FEA1865F1E61E0C700A94135 /* ErrorHandling.swift in Sources */,
 				FEA1865B1E61A00200A94135 /* DataModel.swift in Sources */,
-				FEA1865D1E61D5AB00A94135 /* GlobalExtensions.swift in Sources */,
+				FEA1865D1E61D5AB00A94135 /* UIViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

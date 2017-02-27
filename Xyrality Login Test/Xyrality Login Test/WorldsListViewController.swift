@@ -14,7 +14,7 @@ class aWorldCell: UICollectionViewCell {
 
 class WorldsListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var worldsList: xyralityWorldsList?
+    var worldsList: XyralityWorldsList?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return worldsList?.worlds.count ?? 0

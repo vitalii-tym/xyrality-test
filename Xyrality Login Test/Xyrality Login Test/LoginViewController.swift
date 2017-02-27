@@ -32,10 +32,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textFieldEmail.addTarget(self, action: #selector(validateCredentialsAndEnableLogin), for: .allEvents)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField.returnKeyType == UIReturnKeyType.next) && textField === textFieldEmail {
             textFieldEmail.resignFirstResponder()
@@ -68,11 +64,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         aNetworkRequest = NetworkRequest()
         aNetworkRequest?.getData(forURL: xyralityAPICalls.worlds.URL(), method: xyralityAPICalls.worlds.method(), payload: payloadForWorlds) { (data, response, error) -> Void in
             if isRequestOK(data, response, error) {
-                if let worldsList = xyralityWorldsList.init(data: data!),
+                if let worldsList = XyralityWorldsList(data: data!),
                    let worldsListVC = UIStoryboard(name: "WorldsList", bundle: nil).instantiateViewController(withIdentifier: "initialWorldsList") as? WorldsListViewController {
                         worldsListVC.worldsList = worldsList
                         self.present(worldsListVC, animated: true)
-                } else if let errorFromAPI = xyralityError.init(data: data!) {
+                } else if let errorFromAPI = XyralityError.init(data: data!) {
                     self.showAlert(title: errorTitles.internalError.text(),
                                    bodyText: NSLocalizedString("Server error. \(errorFromAPI.errorText)", comment: "error description when API returns an error message"))
                 } else {
